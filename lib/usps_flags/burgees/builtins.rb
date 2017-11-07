@@ -5,7 +5,7 @@ class USPSFlags::Burgees::Builtins
     end
   end
 
-  def self.load
+  def self.load(burgee)
     #
   end
 end

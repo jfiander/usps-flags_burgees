@@ -9,4 +9,8 @@ class USPSFlags::Burgees
   def self.available
     USPSFlags::Burgees::Builtins.available + USPSFlags::Burgees::Customs.available
   end
+
+  def self.load(burgee)
+    raise USPSFlags::Errors::UnknownBurgee unless self.available.include?(burgee)
+  end
 end
