@@ -5,7 +5,8 @@ class USPSFlags::Burgees::Builtins
     }.map(&:to_sym)
   end
 
-  def self.load(burgee)
-    #
+  def self.get(burgee)
+    raise USPSFlags::Errors::UnknownBurgee unless self.available.include?(burgee)
+    ::File.read("lib/usps_flags/burgees/builtins/#{burgee}.svg")
   end
 end

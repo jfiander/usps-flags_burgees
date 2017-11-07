@@ -5,7 +5,8 @@ class USPSFlags::Burgees::Customs
     end
   end
 
-  def self.load(burgee)
-    #
+  def self.get(burgee)
+    raise USPSFlags::Errors::UnknownBurgee unless self.available.include?(burgee)
+    ::File.read("lib/usps_flags/burgees/customs/#{burgee}.svg")
   end
 end
