@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    usps_flags-burgees (0.0.1)
+    usps_flags-burgees (0.0.2)
       usps_flags (~> 0.3, >= 0.3.6)
 
 GEM
