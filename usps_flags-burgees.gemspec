@@ -12,8 +12,8 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split("\n").reject { |f| f.match /archive\/.*/ }
   s.test_files    = `git ls-files -- spec/*`.split("\n")
 
-  s.cert_chain    = ['certs/jfiander.pem']
-  s.signing_key   = File.expand_path("~/.ssh/usps_flags-private_key.pem") if $0 =~ /gem\z/
+  # s.cert_chain    = ['certs/jfiander.pem']
+  # s.signing_key   = File.expand_path("~/.ssh/usps_flags-private_key.pem") if $0 =~ /gem\z/
 
   s.required_ruby_version = '~> 2.4'
 
