@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors       = ['Julian Fiander']
   s.email         = 'julian@fiander.one'
   s.require_paths = ['lib'] #, 'spec', 'doc']
-  s.files         = `git ls-files`.split("\n").reject { |f| f.match /archive\/.*/ }
+  s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- spec/*`.split("\n")
 
   # s.cert_chain    = ['certs/jfiander.pem']
