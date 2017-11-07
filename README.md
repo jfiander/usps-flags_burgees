@@ -11,3 +11,17 @@ USPSFlags::Config.new do |config|
   config.burgees_dir = "/path/to/burgees"
 end
 ```
+
+## Usage
+
+```ruby
+USPSFlags::Burgees.get(:burgee_name)
+```
+
+## License
+
+Actual images generated may be registered trademarks of their
+respective squadrons.
+
+This project is released under the
+[GPLv3](https://raw.github.com/jfiander/usps-flags/master/LICENSE).
