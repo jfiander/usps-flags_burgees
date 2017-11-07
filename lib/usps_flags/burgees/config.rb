@@ -14,4 +14,8 @@ class USPSFlags::Config
     yield self if block_given?
     @@burgees_dir = @burgees_dir
   end
+
+  def self.burgees_dir
+    @@burgees_dir
+  end
 end
