@@ -1,5 +1,6 @@
 require 'usps_flags'
 require 'usps_flags/burgees/config'
+require 'usps_flags/burgees/errors'
 
 class USPSFlags::Burgees
   require 'usps_flags/burgees/builtins'
