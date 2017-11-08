@@ -15,6 +15,12 @@ class USPSFlags::Config
   end
 
   def self.burgees_dir
-    @@burgees_dir
+    burgees_path = if defined?(::Rails)
+      "#{::Rails.root}/app/lib/usps-burgees"
+    else
+      @@burgees_dir
+    end
+    ::FileUtils.mkdir_p(burgees_path)
+    burgees_path
   end
 end
