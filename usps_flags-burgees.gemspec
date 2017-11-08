@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.license       = 'GPL-3.0'
   s.authors       = ['Julian Fiander']
   s.email         = 'julian@fiander.one'
-  s.require_paths = ['lib', 'spec'] #, 'doc']
+  s.require_paths = ['lib', 'spec']
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- spec/*`.split("\n")
 
