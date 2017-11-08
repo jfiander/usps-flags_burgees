@@ -21,5 +21,6 @@ RSpec.configure do |config|
 
   config.after(:suite) do
     ::FileUtils.rm_rf("tmp") if ::Dir.exist?("tmp")
+    ::FileUtils.rm_rf(USPSFlags::Config.burgees_dir) if ::Dir.exist?(USPSFlags::Config.burgees_dir)
   end
 end
