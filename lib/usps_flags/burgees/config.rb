@@ -2,11 +2,7 @@
 #
 # @private
 class USPSFlags::Config
-  @@burgees_dir ||= if defined?(::Rails)
-    "#{::Rails.root}/app/lib/usps-burgees"
-  else
-    "#{File.dirname(__dir__)}/output"
-  end
+  @@burgees_dir ||= defined?(::Rails) ? "#{::Rails.root}/app/lib/usps-burgees" : "#{File.dirname(__dir__)}/output"
 
   attr_accessor :burgees_dir
 
