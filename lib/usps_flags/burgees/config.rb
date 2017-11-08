@@ -9,8 +9,12 @@ class USPSFlags::Config
   alias :parent_initialize :initialize
   def initialize
     @burgees_dir = @@burgees_dir
-    parent_initialize
-    yield self if block_given?
+    parent_initialize do |c|
+      c.flags_dir = USPSFlags::Config.flags_dir
+      c.reset = USPSFlags::Config.reset
+      c.use_larger_tridents = USPSFlags::Config.use_larger_tridents
+    end
+    yield self if block_given? # This appears to be overwriting the parent variables with defaults
     @@burgees_dir = @burgees_dir
   end
 
