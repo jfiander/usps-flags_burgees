@@ -4,17 +4,21 @@
 class USPSFlags::Config
   @@burgees_dir ||= defined?(::Rails) ? "#{::Rails.root}/app/lib/usps-burgees" : "#{File.dirname(__dir__)}/output"
 
+  @@flags_dir ||= USPSFlags::Config.flags_dir
+  @@reset ||= USPSFlags::Config.reset
+  @@use_larger_tridents ||= USPSFlags::Config.use_larger_tridents
+
   attr_accessor :burgees_dir
 
   alias :parent_initialize :initialize
   def initialize
     @burgees_dir = @@burgees_dir
     parent_initialize do |c|
-      c.flags_dir = USPSFlags::Config.flags_dir
-      c.reset = USPSFlags::Config.reset
-      c.use_larger_tridents = USPSFlags::Config.use_larger_tridents
+      c.flags_dir = @@flags_dir
+      c.reset = @@reset
+      c.use_larger_tridents = @@use_larger_tridents
     end
-    yield self if block_given? # This appears to be overwriting the parent variables with defaults
+    yield self if block_given?
     @@burgees_dir = @burgees_dir
   end
 
