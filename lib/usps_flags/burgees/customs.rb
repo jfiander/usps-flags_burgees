@@ -1,3 +1,6 @@
+# Helper class for handling user-provided burgees.
+#
+# @private
 class USPSFlags::Burgees::Customs
   def self.available
     Dir.glob("#{USPSFlags::Config.burgees_dir}/**/*.svg").map do |b|

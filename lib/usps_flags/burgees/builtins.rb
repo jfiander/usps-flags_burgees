@@ -1,3 +1,6 @@
+# Helper class for handling built-in burgees.
+#
+# @private
 class USPSFlags::Burgees::Builtins
   def self.available
     Dir.glob("lib/usps_flags/burgees/builtins/**/*.svg").map { |b|

@@ -2,14 +2,25 @@ require 'usps_flags'
 require 'usps_flags/burgees/config'
 require 'usps_flags/burgees/errors'
 
+# Main class for generating burgees.
 class USPSFlags::Burgees
   require 'usps_flags/burgees/builtins'
   require 'usps_flags/burgees/customs'
 
+  # List of available burgees.
   def self.available
     USPSFlags::Burgees::Builtins.available + USPSFlags::Burgees::Customs.available
   end
 
+  # Constructor for generating burgees.
+  #
+  # @example Generate Birmingham's burgee
+  #  burgee = USPSFlags::Burgee.new do |b|
+  #    b.type = :birmingham
+  #    b.ourfile = "/path/to/svg/output.svg"
+  #  end
+  #
+  #  burgee.svg #=> Generates SVG file at "/path/to/svg/output.svg"
   def initialize
     @squadron = nil
     @outfile = nil
@@ -27,6 +38,9 @@ class USPSFlags::Burgees
   # attr_accessor :height
   attr_accessor :title
 
+  # Generates the constructed file as SVG.
+  #
+  # @return [String] Returns the SVG file output path, or the svg data if no path was specified.
   def svg
     raise USPSFlags::Errors::UnknownBurgee unless USPSFlags::Burgees.available.include?(@squadron)
 

@@ -1,3 +1,6 @@
+# Extension of USPSFlags::Config to allow including custom burgee files.
+#
+# @private
 class USPSFlags::Config
   @@burgees_dir ||= if defined?(::Rails)
     "#{::Rails.root}/app/lib/usps-burgees"
