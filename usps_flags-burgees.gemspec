@@ -18,4 +18,8 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '~> 2.4'
 
   s.add_runtime_dependency 'usps_flags', '~> 0.3',  '>= 0.3.6'
+
+  s.add_development_dependency 'rake',      '~> 12.1', '>= 12.1.0'
+  s.add_development_dependency 'rspec',     '~> 3.7',  '>= 3.7.0'
+  s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4', '>= 0.4.8'
 end
