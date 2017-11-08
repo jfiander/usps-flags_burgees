@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'usps_flags-burgees'
-  s.version       = '0.0.7'
+  s.version       = '0.0.8'
   s.date          = '2017-11-08'
   s.summary       = 'Flag generator for United States Power Squadrons burgees'
   s.description   = 'An extension to the flag image (PNG, SVG) generator for United States Power Squadrons to generate burgees.'
