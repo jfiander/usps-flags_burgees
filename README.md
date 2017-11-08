@@ -21,6 +21,23 @@ end
 USPSFlags::Burgees.get(:burgee_name)
 ```
 
+## Security
+
+This gem is cryptographically signed. To be sure the gem code hasn’t been
+tampered with:
+
+Add my public key as a trusted certificate:
+
+```sh
+gem cert --add <(curl -Ls https://raw.github.com/jfiander/usps-flags/master/certs/jfiander.pem)
+```
+
+Then install the gem securely:
+
+```sh
+gem install usps_flags -P HighSecurity
+```
+
 ## License
 
 Actual images generated may be registered trademarks of their
