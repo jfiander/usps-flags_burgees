@@ -9,7 +9,7 @@ class USPSFlags::Burgees
 
   # List of available burgees.
   def self.available
-    USPSFlags::Burgees::Builtins.available + USPSFlags::Burgees::Customs.available
+    (USPSFlags::Burgees::Builtins.available + USPSFlags::Burgees::Customs.available).uniq
   end
 
   # Constructor for generating burgees.
