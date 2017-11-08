@@ -114,4 +114,23 @@ describe USPSFlags::Burgees do
       SVG
     )
   end
+
+  it "should generate a burgee from the custom directory" do
+    @custom_file = "#{USPSFlags::Config.burgees_dir}/birmingham.svg"
+    ::FileUtils.mkdir_p(USPSFlags::Config.burgees_dir)
+    ::FileUtils.cp("lib/usps_flags/burgees/builtins/birmingham.svg", @custom_file)
+    f = ::File.open(@custom_file, "w+")
+    f.write("<!-- Custom -->")
+    f.close
+
+    @burgee = USPSFlags::Burgees.new do |b|
+      b.squadron = :birmingham
+      b.outfile = ""
+    end
+
+    expect(@burgee.svg).to include("<title>Birmingham Burgee</title>")
+    expect(@burgee.svg).to include("<!-- Custom -->")
+
+    ::FileUtils.rm_rf(USPSFlags::Config.burgees_dir)
+  end
 end
