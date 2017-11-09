@@ -14,10 +14,12 @@ describe USPSFlags::Config do
           "tmp/rails_app"
         end
       end
+
+      @config = USPSFlags::Config.new
     end
 
     it "should use the default Rails log directory" do
-      expect(USPSFlags.configuration.burgees_dir).to eql("tmp/rails_app/app/lib/usps-burgees")
+      expect(@config.burgees_dir).to eql("tmp/rails_app/app/lib/usps-burgees")
     end
   end
 end
