@@ -10,7 +10,7 @@ An extension for [USPSFlags](https://github.com/jfiander/usps-flags) to provide 
 ## Configuration
 
 ```ruby
-USPSFlags::Config.new do |config|
+USPSFlags.configure do |config|
   config.burgees_dir = "/path/to/burgees"
 end
 ```

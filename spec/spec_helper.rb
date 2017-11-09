@@ -13,14 +13,16 @@ RSpec::Expectations.configuration.on_potential_false_positives = :nothing
 RSpec.configure do |config|
   config.before(:suite) do
     $tmp_flags_dir = "tmp/flags"
+    $tmp_burgees_dir = "tmp/path/to/burgees"
 
-    USPSFlags::Config.new do |c|
+    USPSFlags.configure do |c|
       c.flags_dir = $tmp_flags_dir
+      c.burgees_dir = $tmp_burgees_dir
     end
   end
 
   config.after(:suite) do
     ::FileUtils.rm_rf("tmp") if ::Dir.exist?("tmp")
-    ::FileUtils.rm_rf(USPSFlags::Config.burgees_dir) if ::Dir.exist?(USPSFlags::Config.burgees_dir)
+    ::FileUtils.rm_rf(USPSFlags.configuration.burgees_dir) if ::Dir.exist?(USPSFlags.configuration.burgees_dir)
   end
 end

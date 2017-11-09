@@ -116,8 +116,8 @@ describe USPSFlags::Burgees do
   end
 
   it "should generate a burgee from the custom directory" do
-    @custom_file = "#{USPSFlags::Config.burgees_dir}/birmingham.svg"
-    ::FileUtils.mkdir_p(USPSFlags::Config.burgees_dir)
+    @custom_file = "#{USPSFlags.configuration.burgees_dir}/birmingham.svg"
+    ::FileUtils.mkdir_p(USPSFlags.configuration.burgees_dir)
     ::FileUtils.cp("lib/usps_flags/burgees/builtins/birmingham.svg", @custom_file)
     f = ::File.open(@custom_file, "w+")
     f.write("<!-- Custom -->")
@@ -131,6 +131,6 @@ describe USPSFlags::Burgees do
     expect(@burgee.svg).to include("<title>Birmingham Burgee</title>")
     expect(@burgee.svg).to include("<!-- Custom -->")
 
-    ::FileUtils.rm_rf(USPSFlags::Config.burgees_dir)
+    ::FileUtils.rm_rf(USPSFlags.configuration.burgees_dir)
   end
 end
