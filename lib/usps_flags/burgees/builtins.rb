@@ -2,14 +2,16 @@
 #
 # @private
 class USPSFlags::Burgees::Builtins
+  @@builtins_dir = "#{File.expand_path(File.dirname(__FILE__))}/builtins"
+
   def self.available
-    Dir.glob("lib/usps_flags/burgees/builtins/**/*.svg").map { |b|
+    Dir.glob("#{@@builtins_dir}/**/*.svg").map { |b|
       b.split("/").last.split(".svg").first
     }.map(&:to_sym)
   end
 
   def self.get(burgee)
-    raise USPSFlags::Errors::UnknownBurgee unless self.available.include?(burgee)
-    ::File.read("lib/usps_flags/burgees/builtins/#{burgee}.svg")
+    raise USPSFlags::Errors::UnknownBurgee "Looked in #{@@builtins_dir}" unless self.available.include?(burgee)
+    ::File.read("#{@@builtins_dir}/#{burgee}.svg")
   end
 end
