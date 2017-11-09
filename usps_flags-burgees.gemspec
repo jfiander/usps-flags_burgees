@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'usps_flags', '~> 0.3',  '>= 0.3.11'
 
-  s.add_development_dependency 'rake',      '~> 12.1', '>= 12.1.0'
+  s.add_development_dependency 'rake',      '~> 12.2', '>= 12.2.1'
   s.add_development_dependency 'rspec',     '~> 3.7',  '>= 3.7.0'
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4', '>= 0.4.8'
 end

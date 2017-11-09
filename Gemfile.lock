@@ -44,7 +44,7 @@ PLATFORMS
 
 DEPENDENCIES
   codeclimate-test-reporter (~> 0.4, >= 0.4.8)
-  rake (~> 12.1, >= 12.1.0)
+  rake (~> 12.2, >= 12.2.1)
   rspec (~> 3.7, >= 3.7.0)
   usps_flags-burgees!
 
