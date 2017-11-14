@@ -6,6 +6,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/760b824f0edac3316a11/maintainability)](https://codeclimate.com/github/jfiander/usps-flags_burgees/maintainability)
 [![Dependencies](https://img.shields.io/gemnasium/jfiander/usps-flags_burgees.svg)](https://gemnasium.com/github.com/jfiander/usps-flags_burgees)
 
+![Burgees](https://img.shields.io/badge/burgees_included-1-blue.svg)
+
 An extension for [USPSFlags](https://github.com/jfiander/usps-flags) to provide squadron burgees.
 
 ## Configuration
