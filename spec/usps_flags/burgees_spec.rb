@@ -39,7 +39,7 @@ describe USPSFlags::Burgees do
 
         <g transform="translate(0.000000,2000.000000) scale(0.1,0.1)" fill="#1086FF" stroke="none">
         <polyline points="0,-20000 30000,-10000 0,0" fill="#1086FF" />
-        <path d="M 19500 -9250
+        <path d="M 22500 -10750
         l 1175.55 818.05
         l -414.7 -1370.85
         l 1141.25 -865.25
@@ -50,8 +50,8 @@ describe USPSFlags::Burgees do
         l 1141.25 865.25
         l -414.7 1370.85
         l 1175.55 -818.05
-        " fill="#FFFFFF" />
-        <path d="M 12500 -12250
+        " fill="#FFFFFF" transform="scale(0.85)" />
+        <path d="M 14000 -14500
         l 1175.55 818.05
         l -414.7 -1370.85
         l 1141.25 -865.25
@@ -62,8 +62,8 @@ describe USPSFlags::Burgees do
         l 1141.25 865.25
         l -414.7 1370.85
         l 1175.55 -818.05
-        " fill="#FFFFFF" />
-        <path d="M 12500 -6250
+        " fill="#FFFFFF" transform="scale(0.85)" />
+        <path d="M 14000 -7000
         l 1175.55 818.05
         l -414.7 -1370.85
         l 1141.25 -865.25
@@ -74,7 +74,7 @@ describe USPSFlags::Burgees do
         l 1141.25 865.25
         l -414.7 1370.85
         l 1175.55 -818.05
-        " fill="#FFFFFF" />
+        " fill="#FFFFFF" transform="scale(0.85)" />
         <path d="M 5800 -14250
         c-104.666,449.9807,-22.6957,1072.0206,423.5843,1684.371
         c316.7131,442.9167,836.5815,765.5356,1051.4854,1365.4361
