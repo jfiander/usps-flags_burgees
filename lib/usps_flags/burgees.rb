@@ -17,7 +17,7 @@ class USPSFlags::Burgees
   # @example Generate Birmingham's burgee
   #  burgee = USPSFlags::Burgee.new do |b|
   #    b.type = :birmingham
-  #    b.ourfile = "/path/to/svg/output.svg"
+  #    b.outfile = "/path/to/svg/output.svg"
   #  end
   #
   #  burgee.svg #=> Generates SVG file at "/path/to/svg/output.svg"
@@ -37,6 +37,7 @@ class USPSFlags::Burgees
   # attr_accessor :width
   # attr_accessor :height
   attr_accessor :title
+  attr_accessor :outfile
 
   # Generates the constructed file as SVG.
   #
