@@ -32,13 +32,13 @@ tampered with:
 Add my public key as a trusted certificate:
 
 ```sh
-gem cert --add <(curl -Ls https://raw.github.com/jfiander/usps-flags/master/certs/jfiander.pem)
+gem cert --add <(curl -Ls https://raw.github.com/jfiander/usps-flags_burgees/master/certs/jfiander.pem)
 ```
 
 Then install the gem securely:
 
 ```sh
-gem install usps_flags -P HighSecurity
+gem install usps_flags-burgees -P HighSecurity
 ```
 
 ## License
@@ -47,4 +47,4 @@ Actual images generated may be registered trademarks of their
 respective squadrons.
 
 This project is released under the
-[GPLv3](https://raw.github.com/jfiander/usps-flags/master/LICENSE).
+[GPLv3](https://raw.github.com/jfiander/usps-flags-burgees/master/LICENSE).
