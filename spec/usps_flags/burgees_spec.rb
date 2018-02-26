@@ -133,4 +133,14 @@ describe USPSFlags::Burgees do
 
     ::FileUtils.rm_rf(USPSFlags.configuration.burgees_dir)
   end
+
+  it "should generate a crossed-staves burgee" do
+    @burgee = USPSFlags::Burgees.new do |b|
+      b.squadron = :birmingham
+      b.outfile = ""
+    end
+
+    expect(@burgee.svg(crossed: true)).to include('<g id="crossed-flags"')
+    expect(@burgee.svg(crossed: true)).to include('<g id="flag-poles"')
+  end
 end

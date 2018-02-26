@@ -6,6 +6,7 @@ require 'usps_flags/burgees/errors'
 class USPSFlags::Burgees
   require 'usps_flags/burgees/builtins'
   require 'usps_flags/burgees/customs'
+  require 'usps_flags/burgees/crossed'
 
   # List of available burgees.
   def self.available
@@ -41,13 +42,22 @@ class USPSFlags::Burgees
 
   # Generates the constructed file as SVG.
   #
+  # @params crossed Returns the burgee crossed-staves with the Ensign.
   # @return [String] Returns the SVG file output path, or the svg data if no path was specified.
-  def svg
+  def svg(crossed: false)
     raise USPSFlags::Errors::UnknownBurgee unless USPSFlags::Burgees.available.include?(@squadron)
 
+    if crossed
+      burgee = crossed(@squadron)
+      header_opts = { width: 1200, height: 600, scale: 7.25 }
+    else
+      burgee = core(@squadron)
+      header_opts = {}
+    end
+
     @svg = <<~SVG
-      #{USPSFlags::Core.headers(title: @title)}
-      #{core(@squadron)}
+      #{USPSFlags::Core.headers(header_opts.merge(title: @title))}
+      #{burgee}
       #{USPSFlags::Core.footer}
     SVG
 
@@ -55,12 +65,17 @@ class USPSFlags::Burgees
   end
 
   private
+
   def core(burgee)
     if custom?(burgee)
       USPSFlags::Burgees::Customs.get(burgee)
     elsif builtin?(burgee)
       USPSFlags::Burgees::Builtins.get(burgee)
     end
+  end
+
+  def crossed(burgee)
+    USPSFlags::Burgees::Crossed.generate(core(burgee))
   end
 
   def custom?(burgee)
