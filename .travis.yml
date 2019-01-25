@@ -8,3 +8,5 @@ notifications:
   email:
     on_success: change
     on_failure: always
+before_script:
+  - gem install bundler:2.0.0
