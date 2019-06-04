@@ -24,7 +24,7 @@ describe USPSFlags::Burgees do
       <<~SVG
         <?xml version="1.0" standalone="no"?>
         <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="1024pt" height="682pt" viewBox="0 0 3072 2048" preserveAspectRatio="xMidYMid meet">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="1024" height="682" viewBox="0 0 3072 2048" preserveAspectRatio="xMidYMid meet">
         <title>Birmingham Burgee</title>
         <metadata>
         <desc id="created-by">Julian Fiander</desc>
@@ -34,7 +34,7 @@ describe USPSFlags::Burgees do
     expect(@burgee.svg).to include(
       <<~SVG
         <desc id="trademark-desc">This image is a registered trademark of United States Power Squadrons.</desc>
-        <desc id="trademark-link">http://www.usps.org/national/itcom/trademark.html</desc>
+        <desc id="trademark-link">https://www.usps.org/images/secretary/itcom/trademark.pdf</desc>
         </metadata>
 
         <g transform="translate(0.000000,2000.000000) scale(0.1,0.1)" fill="#1086FF" stroke="none">
