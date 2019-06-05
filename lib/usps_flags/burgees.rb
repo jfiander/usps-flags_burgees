@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'usps_flags'
 require 'usps_flags/burgees/config'
 require 'usps_flags/burgees/errors'
@@ -28,7 +30,7 @@ class USPSFlags::Burgees
     # @width = 3000
     # @height = 2000
     @title = nil
-    @generated_at = Time.now.strftime("%Y%m%d.%H%S%z")
+    @generated_at = Time.now.strftime('%Y%m%d.%H%S%z')
     yield self if block_given?
     @title ||= title(@squadron)
   end
@@ -47,13 +49,8 @@ class USPSFlags::Burgees
   def svg(crossed: false)
     raise USPSFlags::Errors::UnknownBurgee unless USPSFlags::Burgees.available.include?(@squadron)
 
-    if crossed
-      burgee = crossed(@squadron)
-      header_opts = { width: 1200, height: 600, scale: 7.25 }
-    else
-      burgee = core(@squadron)
-      header_opts = {}
-    end
+    burgee = crossed ? crossed(@squadron) : core(@squadron)
+    header_opts = crossed ? { width: 1200, height: 600, scale: 7.25 } : {}
 
     @svg = <<~SVG
       #{USPSFlags::Core.headers(header_opts.merge(title: @title))}
@@ -64,7 +61,7 @@ class USPSFlags::Burgees
     USPSFlags::Helpers.output(@svg, outfile: @outfile)
   end
 
-  private
+private
 
   def core(burgee)
     if custom?(burgee)
@@ -88,8 +85,8 @@ class USPSFlags::Burgees
 
   def title(burgee)
     burgee_string = burgee.to_s
-    burgee_title = if burgee_string.match(/_/)
-      burgee_string.gsub("_", " ").split(" ").map { |word| word.capitalize }.join(" ") + " Burgee"
+    if burgee_string.match?(/_/)
+      burgee_string.gsub('_', ' ').split(' ').map { |word| word.capitalize }.join(' ') + ' Burgee'
     else
       "#{burgee_string.capitalize} Burgee"
     end

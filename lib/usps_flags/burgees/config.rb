@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Extension of USPSFlags::Config to allow including custom burgee files.
 #
 # @private
@@ -10,7 +12,8 @@ class USPSFlags::Config
     yield self if block_given?
   end
 
-  private
+private
+
   def get_extension_defaults
     @burgees_dir ||= defined?(::Rails) ? "#{::Rails.root}/app/lib/usps-burgees" : "#{File.dirname(__dir__)}/output"
   end

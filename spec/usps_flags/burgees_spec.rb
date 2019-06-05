@@ -1,23 +1,25 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe USPSFlags::Burgees do
-  it "should return the list of available burgees from available" do
+  it 'should return the list of available burgees from available' do
     expect(USPSFlags::Burgees.available).to eql([:birmingham])
   end
 
-  it "should raise USPSFlags::Errors::UnknownBurgee if an invalid burgee is entered" do
+  it 'should raise USPSFlags::Errors::UnknownBurgee if an invalid burgee is entered' do
     @burgee = USPSFlags::Burgees.new do |b|
       b.squadron = :not_a_squadron
-      b.outfile = ""
+      b.outfile = ''
     end
 
     expect { @burgee.svg }.to raise_error(USPSFlags::Errors::UnknownBurgee)
   end
 
-  it "should generate a burgee from the builtins" do
+  it 'should generate a burgee from the builtins' do
     @burgee = USPSFlags::Burgees.new do |b|
       b.squadron = :birmingham
-      b.outfile = ""
+      b.outfile = ''
     end
 
     expect(@burgee.svg).to include(
@@ -115,29 +117,29 @@ describe USPSFlags::Burgees do
     )
   end
 
-  it "should generate a burgee from the custom directory" do
+  it 'should generate a burgee from the custom directory' do
     @custom_file = "#{USPSFlags.configuration.burgees_dir}/birmingham.svg"
     ::FileUtils.mkdir_p(USPSFlags.configuration.burgees_dir)
-    ::FileUtils.cp("lib/usps_flags/burgees/builtins/birmingham.svg", @custom_file)
-    f = ::File.open(@custom_file, "w+")
-    f.write("<!-- Custom -->")
+    ::FileUtils.cp('lib/usps_flags/burgees/builtins/birmingham.svg', @custom_file)
+    f = ::File.open(@custom_file, 'w+')
+    f.write('<!-- Custom -->')
     f.close
 
     @burgee = USPSFlags::Burgees.new do |b|
       b.squadron = :birmingham
-      b.outfile = ""
+      b.outfile = ''
     end
 
-    expect(@burgee.svg).to include("<title>Birmingham Burgee</title>")
-    expect(@burgee.svg).to include("<!-- Custom -->")
+    expect(@burgee.svg).to include('<title>Birmingham Burgee</title>')
+    expect(@burgee.svg).to include('<!-- Custom -->')
 
     ::FileUtils.rm_rf(USPSFlags.configuration.burgees_dir)
   end
 
-  it "should generate a crossed-staves burgee" do
+  it 'should generate a crossed-staves burgee' do
     @burgee = USPSFlags::Burgees.new do |b|
       b.squadron = :birmingham
-      b.outfile = ""
+      b.outfile = ''
     end
 
     expect(@burgee.svg(crossed: true)).to include('<g id="crossed-flags"')
