@@ -2,8 +2,8 @@
 
 Gem::Specification.new do |s|
   s.name          = 'usps_flags-burgees'
-  s.version       = '0.0.22'
-  s.date          = '2019-06-04'
+  s.version       = '0.1.0'
+  s.date          = '2019-06-08'
   s.summary       = 'Flag generator for United States Power Squadrons burgees'
   s.description   = 'An extension to the flag image (PNG, SVG) generator for United States Power Squadrons to generate burgees.'
   s.homepage      = 'http://rubygems.org/gems/usps_flags-burgees'
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '~> 2.4'
 
-  s.add_runtime_dependency 'usps_flags', '~> 0.3',  '>= 0.3.24'
+  s.add_runtime_dependency 'usps_flags', '~> 0.5',  '>= 0.5.1'
 
   s.add_development_dependency 'rake',      '~> 12.2', '>= 12.2.1'
   s.add_development_dependency 'rspec',     '~> 3.7',  '>= 3.7.0'

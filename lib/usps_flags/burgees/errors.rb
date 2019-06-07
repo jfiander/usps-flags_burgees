@@ -3,10 +3,12 @@
 # Custom errors.
 #
 # @private
-module USPSFlags::Errors
-  class USPSFlags::Errors::UnknownBurgee < StandardError
-    def initialize(msg = 'You have requested an unknown burgee.')
-      super(msg)
+class USPSFlags
+  class Errors
+    class UnknownBurgee < StandardError
+      def initialize(msg = 'You have requested an unknown burgee.')
+        super(msg)
+      end
     end
   end
 end

@@ -38,7 +38,6 @@ describe USPSFlags::Burgees do
         <desc id="trademark-desc">This image is a registered trademark of United States Power Squadrons.</desc>
         <desc id="trademark-link">https://www.usps.org/images/secretary/itcom/trademark.pdf</desc>
         </metadata>
-
         <g transform="translate(0.000000,2000.000000) scale(0.1,0.1)" fill="#1086FF" stroke="none">
         <polyline points="0,-20000 30000,-10000 0,0" fill="#1086FF" />
         <path d="M 22500 -10750
