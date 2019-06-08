@@ -3,18 +3,22 @@
 # Helper class for handling built-in burgees.
 #
 # @private
-class USPSFlags::Burgees::Builtins
-  @@builtins_dir = "#{File.expand_path(File.dirname(__FILE__))}/builtins"
+class USPSFlags
+  class Burgees
+    class Builtins
+      @builtins_dir = "#{__dir__}/builtins"
 
-  def self.available
-    Dir.glob("#{@@builtins_dir}/**/*.svg").map { |b|
-      b.split('/').last.split('.svg').first
-    }.map(&:to_sym)
-  end
+      def self.available
+        Dir.glob("#{@builtins_dir}/**/*.svg").map do |b|
+          b.split('/').last.split('.svg').first
+        end.map(&:to_sym)
+      end
 
-  def self.get(burgee)
-    raise USPSFlags::Errors::UnknownBurgee "Looked in #{@@builtins_dir}" unless self.available.include?(burgee)
+      def self.get(burgee)
+        raise USPSFlags::Errors::UnknownBurgee "Looked in #{@builtins_dir}" unless available.include?(burgee)
 
-    ::File.read("#{@@builtins_dir}/#{burgee}.svg")
+        ::File.read("#{@builtins_dir}/#{burgee}.svg")
+      end
+    end
   end
 end

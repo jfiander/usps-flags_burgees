@@ -3,12 +3,12 @@
 require 'spec_helper'
 
 describe USPSFlags::Burgees do
-  it 'should return the list of available burgees from available' do
-    expect(USPSFlags::Burgees.available).to eql([:birmingham])
+  it 'returns the list of available burgees from available' do
+    expect(described_class.available).to eql([:birmingham])
   end
 
-  it 'should raise USPSFlags::Errors::UnknownBurgee if an invalid burgee is entered' do
-    @burgee = USPSFlags::Burgees.new do |b|
+  it 'raises USPSFlags::Errors::UnknownBurgee if an invalid burgee is entered' do
+    @burgee = described_class.new do |b|
       b.squadron = :not_a_squadron
       b.outfile = ''
     end
@@ -16,22 +16,11 @@ describe USPSFlags::Burgees do
     expect { @burgee.svg }.to raise_error(USPSFlags::Errors::UnknownBurgee)
   end
 
-  it 'should generate a burgee from the builtins' do
-    @burgee = USPSFlags::Burgees.new do |b|
+  it 'generates a burgee from the builtins' do
+    @burgee = described_class.new do |b|
       b.squadron = :birmingham
       b.outfile = ''
     end
-
-    expect(@burgee.svg).to include(
-      <<~SVG
-        <?xml version="1.0" standalone="no"?>
-        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="1024" height="682" viewBox="0 0 3072 2048" preserveAspectRatio="xMidYMid meet">
-        <title>Birmingham Burgee</title>
-        <metadata>
-        <desc id="created-by">Julian Fiander</desc>
-      SVG
-    )
 
     expect(@burgee.svg).to include(
       <<~SVG
@@ -116,32 +105,43 @@ describe USPSFlags::Burgees do
     )
   end
 
-  it 'should generate a burgee from the custom directory' do
-    @custom_file = "#{USPSFlags.configuration.burgees_dir}/birmingham.svg"
+  it 'generates a burgee from the custom directory' do
+    @custom_file = "#{USPSFlags.configuration.burgees_dir}/custom_birmingham.svg"
     ::FileUtils.mkdir_p(USPSFlags.configuration.burgees_dir)
     ::FileUtils.cp('lib/usps_flags/burgees/builtins/birmingham.svg', @custom_file)
+
+    burgee = ::File.read(@custom_file).gsub('Birmingham Burgee', 'Custom Birmingham Burgee')
     f = ::File.open(@custom_file, 'w+')
-    f.write('<!-- Custom -->')
+    f.write(burgee)
     f.close
 
-    @burgee = USPSFlags::Burgees.new do |b|
-      b.squadron = :birmingham
+    @burgee = described_class.new do |b|
+      b.squadron = :custom_birmingham
       b.outfile = ''
     end
 
-    expect(@burgee.svg).to include('<title>Birmingham Burgee</title>')
-    expect(@burgee.svg).to include('<!-- Custom -->')
+    expect(@burgee.svg).to include('<title>Custom Birmingham Burgee</title>')
 
     ::FileUtils.rm_rf(USPSFlags.configuration.burgees_dir)
   end
 
-  it 'should generate a crossed-staves burgee' do
-    @burgee = USPSFlags::Burgees.new do |b|
-      b.squadron = :birmingham
-      b.outfile = ''
+  describe 'crossed-staves burgee' do
+    it 'has the crossed flags' do
+      @burgee = described_class.new do |b|
+        b.squadron = :birmingham
+        b.outfile = ''
+      end
+
+      expect(@burgee.svg(crossed: true)).to include('<g id="crossed-flags"')
     end
 
-    expect(@burgee.svg(crossed: true)).to include('<g id="crossed-flags"')
-    expect(@burgee.svg(crossed: true)).to include('<g id="flag-poles"')
+    it 'has the crossed flag poles' do
+      @burgee = described_class.new do |b|
+        b.squadron = :birmingham
+        b.outfile = ''
+      end
+
+      expect(@burgee.svg(crossed: true)).to include('<g id="flag-poles"')
+    end
   end
 end
