@@ -25,7 +25,7 @@ class USPSFlags
     #  end
     #
     #  burgee.svg #=> Generates SVG file at "/path/to/svg/output.svg"
-    def initialize(options = {})
+    def initialize(**options)
       @squadron = options[:squadron]
       @outfile = options[:outfile]
       # @width = 3000
@@ -36,8 +36,7 @@ class USPSFlags
       @title ||= format_title(@squadron)
     end
 
-    attr_accessor :squadron
-    attr_accessor :outfile
+    attr_accessor :squadron, :outfile
     # attr_accessor :width
     # attr_accessor :height
     attr_accessor :title
@@ -53,7 +52,7 @@ class USPSFlags
       header_opts = crossed ? { width: 1200, height: 600, scale: 7.25 } : {}
 
       @svg = <<~SVG
-        #{USPSFlags::Core.headers(header_opts.merge(title: @title))}
+        #{USPSFlags::Core.headers(**header_opts.merge(title: @title))}
         #{burgee}
         #{USPSFlags::Core.footer}
       SVG
@@ -86,7 +85,7 @@ class USPSFlags
     def format_title(burgee)
       burgee_string = burgee.to_s
       if burgee_string.match?(/_/)
-        burgee_string.gsub('_', ' ').split(' ').map(&:capitalize).join(' ') + ' Burgee'
+        "#{burgee_string.gsub('_', ' ').split(' ').map(&:capitalize).join(' ')} Burgee"
       else
         "#{burgee_string.capitalize} Burgee"
       end

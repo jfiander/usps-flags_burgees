@@ -1,20 +1,21 @@
 require: rubocop-rspec
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 3.0
   Exclude:
     - lib/output/*
     - tmp/**/*
     - vendor/**/*
+  NewCops: enable
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 Layout/EmptyLinesAroundAccessModifier:
   Enabled: true
-Layout/AlignArray:
+Layout/ArrayAlignment:
   Enabled: true
-Layout/AlignHash:
+Layout/HashAlignment:
   Enabled: true
 Layout/EmptyLineAfterGuardClause:
   Enabled: true
@@ -33,6 +34,8 @@ Lint/UnusedMethodArgument:
   Enabled: true
 Lint/UselessAssignment:
   Enabled: true
+Lint/ConstantDefinitionInBlock:
+  Enabled: false
 
 Metrics/BlockLength:
   Exclude:
@@ -51,7 +54,7 @@ Metrics/CyclomaticComplexity:
 Metrics/AbcSize:
   Enabled: true
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Enabled: false
 Naming/AccessorMethodName:
   Enabled: false
@@ -63,6 +66,8 @@ RSpec/InstanceVariable:
 RSpec/NestedGroups:
   Enabled: false
 RSpec/ExampleLength:
+  Enabled: false
+RSpec/LeakyConstantDeclaration:
   Enabled: false
 
 Style/Documentation:
